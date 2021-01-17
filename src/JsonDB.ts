@@ -341,7 +341,7 @@ export class JsonDB {
             else {
                 data = JSON.stringify(this.data)
             }
-            FS.writeFileSync(this.config.filename, data, 'utf8')
+            this.config.saveFn(this.config.filename, data);
         } catch (err) {
             const error = new DatabaseError("Can't save the database", 2, err)
             throw error
